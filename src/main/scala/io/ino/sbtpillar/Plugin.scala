@@ -144,6 +144,7 @@ object Plugin extends sbt.Plugin {
       val parser = com.chrisomeara.pillar.Parser()
       Option(migrationsDir.listFiles()) match {
         case Some(files) => files.map { f =>
+          println(s"Reading migration ${f.getName}")
           val in = Files.newInputStream(f.toPath)
           try {
             parser.parse(in)
